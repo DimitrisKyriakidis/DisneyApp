@@ -1,6 +1,6 @@
 # DisneyApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0, Angular Material,Tailwind CSS and Ngrx Store.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0, Angular Material, Tailwind CSS and Ngrx Store.
 
 
 ## Development server
