@@ -1,0 +1,78 @@
+.table-container {
+  position: relative;
+  max-height: 100%;
+}
+.table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  border-color: var(--primary-color);
+  table-layout: fixed;
+  width: 100%;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  border-color: var(--primary-color);
+  text-align: left;
+}
+
+tr.mat-row,
+tr.mat-footer-row {
+  background-color: inherit;
+}
+tr:hover {
+  background-color: rgb(214, 210, 210);
+}
+
+tr.mat-header-row {
+  background-color: var(--primary-color);
+}
+
+/* target all columns except the first one */
+td.mat-cell:not(:first-child),
+td.mat-footer-cell:not(:first-child) {
+  text-align: center;
+}
+
+/* target all header cells except the first one */
+th.mat-header-cell:not(:first-child) {
+  text-align: center;
+}
+
+/* target the first header cell */
+::ng-deep th.mat-header-cell:first-child {
+  display: flex;
+  justify-content: flex-start !important;
+  margin-top: 1rem;
+  font-size: 12px;
+}
+
+::ng-deep .mat-header-row {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1 !important;
+}
+
+::ng-deep .mat-sort-header-container {
+  justify-content: center;
+}
+
+@media screen and (min-width: 640px) and (max-width: 1024px) {
+  .table {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 2000px) {
+  .paginator {
+    display: flex;
+    justify-content: flex-end;
+    width: 47%;
+    position: absolute;
+    bottom: 20rem;
+  }
+}

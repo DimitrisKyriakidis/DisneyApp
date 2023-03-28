@@ -1,0 +1,107 @@
+<ng-container *ngIf="allCharacters$ | async as characters">
+  <div class="table-container">
+    <table
+      mat-table
+      [dataSource]="characters"
+      [@listAnimation]="characters.length"
+      (matSortChange)="sortData($event)"
+      matSort
+      class="text-center items-center rounded-sm table"
+    >
+      <ng-container class="text-center items-center" matColumnDef="name">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header="name"
+          class="text-base font-medium"
+        >
+          Name
+        </th>
+
+        <td mat-cell *matCellDef="let element" class="">
+          {{ element["name"] }}
+        </td>
+      </ng-container>
+      <br />
+      <ng-container matColumnDef="tvShowsLength">
+        <th mat-header-cell *matHeaderCellDef class="text-base font-medium">
+          #TV Shows
+        </th>
+        <td mat-cell *matCellDef="let element" class="">
+          {{ element["tvShows"] ? element["tvShows"].length : 0 }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="videoGamesLength">
+        <th mat-header-cell *matHeaderCellDef class="text-base font-medium">
+          #Video Games
+        </th>
+        <td mat-cell *matCellDef="let element" class="">
+          {{ element["videoGames"] ? element["videoGames"].length : 0 }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="allies">
+        <th mat-header-cell *matHeaderCellDef class="text-base font-medium">
+          Allies
+        </th>
+        <td mat-cell *matCellDef="let element" class="">
+          {{ element["allies"] ? element["allies"].length : 0 }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="enemies">
+        <th mat-header-cell *matHeaderCellDef class="text-base font-medium">
+          Enemies
+        </th>
+        <td mat-cell *matCellDef="let element" class="">
+          {{ element["enemies"] ? element["enemies"].length : 0 }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="selectCharacter(row)"
+        class="clickable"
+        [hidden]="loading$ | async"
+      ></tr>
+    </table>
+  </div>
+
+  <div *ngIf="loading$ | async" class="flex justify-center items-center">
+    <mat-spinner class="mt-20" color="accent" mode="indeterminate">
+    </mat-spinner>
+  </div>
+
+  <div
+    *ngIf="characters && characters.length > 0"
+    class="flex justify-end w-[47%] absolute bottom-44 paginator"
+  >
+    <mat-paginator
+      #paginator
+      (page)="getNextPage($event)"
+      [pageSize]="tableOptions.pageSize"
+      [length]="(totalAndPageIndex$ | async)?.total"
+      [pageIndex]="tableOptions.pageIndex"
+      [pageSizeOptions]="[10, 20, 50, 100, 200, 500]"
+      showFirstLastButtons
+      class=""
+    >
+    </mat-paginator>
+  </div>
+</ng-container>
+
+<!-- no results message -->
+<ng-container
+  *ngIf="(allCharacters$ | async).length === 0 && !(loading$ | async)"
+>
+  <div class="flex flex-col mx-auto items-center gap-5 mt-16">
+    <img src="../../../assets/images/no-results.png" class="w-48" />
+    <p class="text-lg text-gray-500">
+      Sorry, there are no results matching your filters.
+    </p>
+  </div>
+</ng-container>

@@ -1,0 +1,87 @@
+<div class="pointer-events-auto w-screen max-w-xl">
+  <div class="flex flex-col h-[21rem] bg-white shadow-xl">
+    <div class="flex-1 overflow-x-auto py-6 px-4 sm:px-6">
+      <div class="flex items-start justify-between">
+        <h2 class="text-lg font-medium text-gray-900">Character info</h2>
+        <div class="ml-3 flex h-7 items-center">
+          <button
+            type="button"
+            (click)="close()"
+            class="-m-2 p-2 text-gray-400 hover:text-gray-500"
+          >
+            <span class="sr-only">Close panel</span>
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <ul class="b">
+          <li class="flex py-6 overflow-x-auto">
+            <div
+              class="h-32 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+            >
+              <img
+                src="{{ data.imageUrl }}"
+                class="h-full w-full object-cover object-center"
+              />
+            </div>
+
+            <div class="ml-4 flex flex-1 flex-col">
+              <div class="flex justify-between text-base">
+                <p class="whitespace-nowrap">
+                  <span class="font-medium"> Character name:</span>
+                  <span class="text-gray-600 ml-1">{{ data.name }}</span>
+                </p>
+              </div>
+              <div class="flex mt-2 whitespace-nowrap">
+                <p class="font-medium">TV Shows:</p>
+                <div *ngIf="data.tvShows.length > 0; else noTvShows">
+                  <p
+                    *ngFor="let tvShow of data.tvShows"
+                    class="mt-1 ml-1 text-sm text-gray-600"
+                  >
+                    {{ tvShow }}
+                  </p>
+                </div>
+                <ng-template #noTvShows>
+                  <p class="mt-0.5 ml-1 text-sm text-gray-600">no tv shows</p>
+                </ng-template>
+              </div>
+
+              <div class="flex whitespace-nowrap mt-6">
+                <p class="font-medium">Video Games:</p>
+                <div *ngIf="data.videoGames.length > 0; else noVideoGames">
+                  <p
+                    *ngFor="let videoGame of data.videoGames"
+                    class="mt-1 ml-1 items-center text-sm text-gray-600"
+                  >
+                    {{ videoGame }}
+                  </p>
+                </div>
+                <ng-template #noVideoGames>
+                  <p class="mt-0.5 ml-1 items-center text-sm text-gray-600">
+                    no video games
+                  </p>
+                </ng-template>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
