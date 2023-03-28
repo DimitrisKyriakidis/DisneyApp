@@ -8,11 +8,11 @@ import {
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Character } from 'src/shared/models/character.model';
+import { Character } from '../shared/models/character.model';
 import {
   selectAllCharacters,
   selectTotalAndPageIndex,
-} from 'src/store/main.selector';
+} from '../store/main.selector';
 
 @Component({
   selector: 'app-home',

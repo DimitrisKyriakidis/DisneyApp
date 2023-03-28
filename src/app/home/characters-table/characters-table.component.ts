@@ -13,11 +13,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Store } from '@ngrx/store';
 import { debounceTime, map, Observable, Subscription } from 'rxjs';
-import { listAnimation } from 'src/shared/animations';
-import { Character } from 'src/shared/models/character.model';
-import { defaultDialogConfig } from 'src/shared/models/default-dialog-config';
-import { MainActionTypes } from 'src/store/main.actions';
-import { selectLoading } from 'src/store/main.selector';
+import { listAnimation } from 'src/app/shared/animations';
+import { Character } from 'src/app/shared/models/character.model';
+import { defaultDialogConfig } from 'src/app/shared/models/default-dialog-config';
+import { MainActionTypes } from 'src/app/store/main.actions';
+import { selectLoading } from 'src/app/store/main.selector';
+
 import { CharacterModalComponent } from '../character-modal/character-modal.component';
 
 @Component({

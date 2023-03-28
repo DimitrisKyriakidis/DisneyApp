@@ -1,4 +1,4 @@
-import { Character } from 'src/shared/models/character.model';
+import { Character } from '../shared/models/character.model';
 
 export interface MainState {
   allCharacters: Character[];

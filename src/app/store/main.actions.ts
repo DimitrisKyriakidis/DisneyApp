@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Character } from 'src/shared/models/character.model';
+import { Character } from '../shared/models/character.model';
 
 export const enum MainActionTypes {
   getAllDisneyCharacters = '[Main] get all disney characters',

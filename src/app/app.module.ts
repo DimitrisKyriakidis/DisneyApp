@@ -3,13 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { EffectsModule } from '@ngrx/effects';
-import { SharedModule } from '../shared/modules/shared.module';
+
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from 'src/routing/app-routing.module';
-import { mainReducer } from 'src/store/main.reducers';
-import { MainEffects } from 'src/store/main.effects';
+import { AppRoutingModule } from './routing/app-routing.module';
+import { SharedModule } from './shared/modules/shared.module';
+import { MainEffects } from './store/main.effects';
+import { mainReducer } from './store/main.reducers';
 
 @NgModule({
   declarations: [AppComponent],
